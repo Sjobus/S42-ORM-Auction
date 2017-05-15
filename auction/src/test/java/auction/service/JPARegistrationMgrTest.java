@@ -8,18 +8,25 @@ import org.junit.Before;
 import org.junit.Test;
 
 import auction.domain.User;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import utill.DatabaseCleaner;
 
 public class JPARegistrationMgrTest {
 
     private RegistrationMgr registrationMgr;
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("auctionPU");
-    private EntityManager em = emf.createEntityManager();
+    private EntityManagerFactory emf;
+    private EntityManager em;
     @Before
     public void setUp() throws Exception {
+        emf = Persistence.createEntityManagerFactory("auctionPU");
+        em = emf.createEntityManager();
         registrationMgr = new RegistrationMgr(em);
+        new DatabaseCleaner(emf.createEntityManager()).clean();
     }
 
     @Test

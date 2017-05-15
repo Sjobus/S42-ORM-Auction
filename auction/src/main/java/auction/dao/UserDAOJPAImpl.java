@@ -23,6 +23,7 @@ public class UserDAOJPAImpl implements UserDAO {
     @Override
     public void create(User user) {
         em.persist(user);
+        //em.close();
     }
 
     @Override
