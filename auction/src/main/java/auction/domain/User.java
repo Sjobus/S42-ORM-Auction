@@ -4,8 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "User.findByEmail", query = "select a from User as a"),
-    @NamedQuery(name = "User.Count", query = "select count(a) from User as a")
+    @NamedQuery(name = "UserDAO.findByEmail", query = "select a from User as a where a.email = :email"),
+    @NamedQuery(name = "UserDAO.count", query = "select count(a) from User as a")
 })
 public class User implements Serializable {
 

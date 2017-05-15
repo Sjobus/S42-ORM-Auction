@@ -9,9 +9,10 @@ import javax.persistence.EntityManager;
 public class RegistrationMgr {
 
     private UserDAO userDAO;
-    
+    private EntityManager em;
     public RegistrationMgr(EntityManager em) {
-        userDAO = new UserDAOJPAImpl(em);
+        this.em = em;
+        userDAO = new UserDAOJPAImpl(this.em);
     }
 
     /**
@@ -31,7 +32,10 @@ public class RegistrationMgr {
             return user;
         }
         user = new User(email);
+        //em.getTransaction().begin();
         userDAO.create(user);
+        //em.getTransaction().commit();
+        //em.close();
         return user;
     }
 

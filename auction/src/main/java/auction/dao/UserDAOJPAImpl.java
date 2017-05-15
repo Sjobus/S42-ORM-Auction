@@ -1,10 +1,7 @@
 package auction.dao;
 
 import auction.domain.User;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
@@ -19,7 +16,7 @@ public class UserDAOJPAImpl implements UserDAO {
 
     @Override
     public int count() {
-        Query q = em.createNamedQuery("User.Count", User.class);
+        Query q = em.createNamedQuery("UserDAO.count", User.class);
         return ((Long) q.getSingleResult()).intValue();
     }
 
@@ -47,8 +44,15 @@ public class UserDAOJPAImpl implements UserDAO {
 
     @Override
     public User findByEmail(String email) {
-        Query q = em.createNamedQuery("User.findByEmail", User.class);
+        try
+        {
+        Query q = em.createNamedQuery("UserDAO.findByEmail", User.class);
         q.setParameter("email", email);
         return (User) q.getSingleResult();
+        }
+        catch(Exception ex)
+        {
+            return null;
+        }
     }
 }
