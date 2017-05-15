@@ -12,16 +12,20 @@ import org.junit.Test;
 import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class SellerMgrTest {
 
     private AuctionMgr auctionMgr;
     private RegistrationMgr registrationMgr;
     private SellerMgr sellerMgr;
-
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("auctionPU");
+    private EntityManager em = emf.createEntityManager();
     @Before
     public void setUp() throws Exception {
-        registrationMgr = new RegistrationMgr();
+        registrationMgr = new RegistrationMgr(em);
         auctionMgr = new AuctionMgr();
         sellerMgr = new SellerMgr();
     }

@@ -2,15 +2,16 @@ package auction.service;
 
 import java.util.*;
 import auction.domain.User;
-import auction.dao.UserDAOCollectionImpl;
 import auction.dao.UserDAO;
+import auction.dao.UserDAOJPAImpl;
+import javax.persistence.EntityManager;
 
 public class RegistrationMgr {
 
     private UserDAO userDAO;
-
-    public RegistrationMgr() {
-        userDAO = new UserDAOCollectionImpl();
+    
+    public RegistrationMgr(EntityManager em) {
+        userDAO = new UserDAOJPAImpl(em);
     }
 
     /**

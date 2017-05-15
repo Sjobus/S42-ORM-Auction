@@ -5,49 +5,50 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 public class UserDAOJPAImpl implements UserDAO {
 
-    private HashMap<String, User> users;
+    private final EntityManager em;
 
-    public UserDAOJPAImpl() {
-        users = new HashMap<String, User>();
+    public UserDAOJPAImpl(EntityManager em) {
+        this.em = em;
     }
 
     @Override
     public int count() {
-        return users.size();
+        Query q = em.createNamedQuery("User.Count", User.class);
+        return ((Long) q.getSingleResult()).intValue();
     }
 
     @Override
     public void create(User user) {
-         if (findByEmail(user.getEmail()) != null) {
-            throw new EntityExistsException();
-        }
-        users.put(user.getEmail(), user);
+        em.persist(user);
     }
 
     @Override
     public void edit(User user) {
-        if (findByEmail(user.getEmail()) == null) {
-            throw new IllegalArgumentException();
-        }
-        users.put(user.getEmail(), user);
-    }
-
-
-    @Override
-    public List<User> findAll() {
-        return new ArrayList<User>(users.values());
-    }
-
-    @Override
-    public User findByEmail(String email) {
-        return users.get(email);
+        em.merge(user);
     }
 
     @Override
     public void remove(User user) {
-        users.remove(user.getEmail());
+        em.remove(em.merge(user));
+    }
+    
+    @Override
+    public List<User> findAll() {
+        CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(User.class));
+        return em.createQuery(cq).getResultList();
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        Query q = em.createNamedQuery("User.findByEmail", User.class);
+        q.setParameter("email", email);
+        return (User) q.getSingleResult();
     }
 }
