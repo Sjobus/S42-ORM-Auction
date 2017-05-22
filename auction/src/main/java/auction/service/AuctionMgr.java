@@ -36,9 +36,9 @@ public class AuctionMgr  {
      * @return een lijst met items met @desciption. Eventueel lege lijst.
      */
     public List<Item> findItemByDescription(String description) {
-        ArrayList<Item> itemList = (ArrayList<Item>) itemDAO.findByDescription(description);
-        if (itemList == null)
-            return new ArrayList<Item>();
+        List<Item> itemList = (List<Item>) itemDAO.findByDescription(description);
+//        if (itemList == null)
+//            return new List<Item>();
         return itemList;
     }
 

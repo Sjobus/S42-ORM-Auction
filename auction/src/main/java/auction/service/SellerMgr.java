@@ -35,6 +35,11 @@ public class SellerMgr {
      *         false als er al geboden was op het item.
      */
     public boolean revokeItem(Item item) {
-        return item.getHighestBid() == null;
+        if(item.getHighestBid() == null)
+        {
+            itemDAO.remove(item);
+            return true;
+        }
+        return false;
     }
 }

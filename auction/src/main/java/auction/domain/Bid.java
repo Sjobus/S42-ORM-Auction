@@ -8,13 +8,18 @@ import nl.fontys.util.Money;
 @Entity
 public class Bid implements Serializable{
 
-    @Id
-    private int id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Embedded
     private FontysTime time;
     @ManyToOne
     private User buyer;
     private Money amount;
-
+    public Bid()
+    {
+        
+    }
+    
     public Bid(User buyer, Money amount) {
         this.buyer = buyer;
         this.amount = amount;

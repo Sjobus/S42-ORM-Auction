@@ -12,22 +12,27 @@ import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import utill.DatabaseCleaner;
 
 public class AuctionMgrTest {
 
     private AuctionMgr auctionMgr;
     private RegistrationMgr registrationMgr;
     private SellerMgr sellerMgr;
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("auctionPU");
-    private EntityManager em = emf.createEntityManager();
+    private EntityManagerFactory emf;
+    private EntityManager em;
     @Before
     public void setUp() throws Exception {
+        emf = Persistence.createEntityManagerFactory("auctionPU");
+        em = emf.createEntityManager();
         registrationMgr = new RegistrationMgr(em);
         auctionMgr = new AuctionMgr(em);
         sellerMgr = new SellerMgr(em);
+        new DatabaseCleaner(emf.createEntityManager()).clean();
     }
 
     @Test
@@ -58,11 +63,11 @@ public class AuctionMgrTest {
         Item item2 = sellerMgr.offerItem(seller4, cat, omsch);
         
         System.out.println("Begin 1");
-        ArrayList<Item> res = (ArrayList<Item>) auctionMgr.findItemByDescription(omsch2);
+        List<Item> res = (List<Item>) auctionMgr.findItemByDescription(omsch2);
         assertEquals(0, res.size());
         System.out.println("Klaar 1");
         System.out.println("Begin 2");
-        res = (ArrayList<Item>) auctionMgr.findItemByDescription(omsch);
+        res = (List<Item>) auctionMgr.findItemByDescription(omsch);
         assertEquals(2, res.size());
         System.out.println("Klaar 2");
     }

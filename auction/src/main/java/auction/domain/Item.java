@@ -10,7 +10,7 @@ import nl.fontys.util.Money;
     @NamedQuery(name = "ItemDAO.count", query = "select count(a) from Item as a")
 })
 public class Item implements Serializable, Comparable {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Category category;
     private String description;
@@ -19,7 +19,10 @@ public class Item implements Serializable, Comparable {
     private User seller;
     @OneToOne
     private Bid highest;
-
+    public Item()
+    {
+        
+    }
     public Item(User seller, Category category, String description) {
         this.seller = seller;
         this.category = category;
