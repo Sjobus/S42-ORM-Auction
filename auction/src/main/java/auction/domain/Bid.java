@@ -1,16 +1,23 @@
 package auction.domain;
 
+import javax.persistence.*;
 import nl.fontys.util.FontysTime;
 import nl.fontys.util.Money;
 
+@Entity
 public class Bid {
 
+    @Id
+    private int id;
     private FontysTime time;
+    @ManyToOne
     private User buyer;
     private Money amount;
 
     public Bid(User buyer, Money amount) {
-        //TODO
+        this.buyer = buyer;
+        this.amount = amount;
+        this.time = FontysTime.now();
     }
 
     public FontysTime getTime() {

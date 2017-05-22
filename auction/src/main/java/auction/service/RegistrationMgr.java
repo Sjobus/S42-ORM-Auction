@@ -32,10 +32,7 @@ public class RegistrationMgr {
             return user;
         }
         user = new User(email);
-        //em.getTransaction().begin();
         userDAO.create(user);
-        //em.getTransaction().commit();
-        //em.close();
         return user;
     }
 

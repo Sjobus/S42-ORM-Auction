@@ -1,7 +1,7 @@
 package auction.domain;
 
 public class Category {
-
+    
     private String description;
 
     private Category() {
