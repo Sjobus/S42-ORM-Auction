@@ -1,11 +1,12 @@
 package auction.domain;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import nl.fontys.util.FontysTime;
 import nl.fontys.util.Money;
 
 @Entity
-public class Bid {
+public class Bid implements Serializable{
 
     @Id
     private int id;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="auction.service.JPARegistrationMgrTest" time="0.075" errors="3" skipped="0">
+<testsuite tests="3" failures="0" name="auction.service.JPARegistrationMgrTest" time="0.14" errors="3" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_102\jre\bin"/>
@@ -63,7 +63,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="auction.service.JPARegistrationMgrTest" name="registerUser" time="0.017">
+  <testcase classname="auction.service.JPARegistrationMgrTest" name="registerUser" time="0.016">
     <error message="
 Exception Description: An exception was thrown while searching for persistence archives with ClassLoader: sun.misc.Launcher$AppClassLoader@6bc7c054
 Internal Exception: javax.persistence.PersistenceException: Exception [EclipseLink-28018] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.EntityManagerSetupException
@@ -144,20 +144,20 @@ Exception Description: The type [class nl.fontys.util.FontysTime] for the attrib
 	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.predeploy(EntityManagerSetupImpl.java:1869)
 	... 35 more
 </error>
-    <system-out>[EL Config]: metadata: 2017-05-22 22:01:20.973--ServerSession(624271064)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Bid] is set to [FIELD].
-[EL Config]: metadata: 2017-05-22 22:01:20.976--ServerSession(624271064)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field buyer] is being defaulted to: class auction.domain.User.
-[EL Config]: metadata: 2017-05-22 22:01:20.977--ServerSession(624271064)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Item] is set to [FIELD].
-[EL Config]: metadata: 2017-05-22 22:01:20.977--ServerSession(624271064)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field seller] is being defaulted to: class auction.domain.User.
-[EL Config]: metadata: 2017-05-22 22:01:20.978--ServerSession(624271064)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to one mapping element [field highest] is being defaulted to: class auction.domain.Bid.
-[EL Config]: metadata: 2017-05-22 22:01:20.979--ServerSession(624271064)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.User] is set to [FIELD].
-[EL Config]: metadata: 2017-05-22 22:01:20.98--ServerSession(624271064)--Thread(Thread[main,5,main])--The alias name for the entity class [class auction.domain.Bid] is being defaulted to: Bid.
-[EL Config]: metadata: 2017-05-22 22:01:20.98--ServerSession(624271064)--Thread(Thread[main,5,main])--The table name for entity [class auction.domain.Bid] is being defaulted to: BID.
-[EL Config]: metadata: 2017-05-22 22:01:20.98--ServerSession(624271064)--Thread(Thread[main,5,main])--The column name for element [amount] is being defaulted to: AMOUNT.
-[EL Config]: metadata: 2017-05-22 22:01:20.98--ServerSession(624271064)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
-[EL Config]: metadata: 2017-05-22 22:01:20.981--ServerSession(624271064)--Thread(Thread[main,5,main])--The column name for element [time] is being defaulted to: TIME.
+    <system-out>[EL Config]: metadata: 2017-05-22 23:03:25.824--ServerSession(135184888)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Bid] is set to [FIELD].
+[EL Config]: metadata: 2017-05-22 23:03:25.826--ServerSession(135184888)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field buyer] is being defaulted to: class auction.domain.User.
+[EL Config]: metadata: 2017-05-22 23:03:25.826--ServerSession(135184888)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Item] is set to [FIELD].
+[EL Config]: metadata: 2017-05-22 23:03:25.826--ServerSession(135184888)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field seller] is being defaulted to: class auction.domain.User.
+[EL Config]: metadata: 2017-05-22 23:03:25.827--ServerSession(135184888)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to one mapping element [field highest] is being defaulted to: class auction.domain.Bid.
+[EL Config]: metadata: 2017-05-22 23:03:25.828--ServerSession(135184888)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.User] is set to [FIELD].
+[EL Config]: metadata: 2017-05-22 23:03:25.829--ServerSession(135184888)--Thread(Thread[main,5,main])--The alias name for the entity class [class auction.domain.Bid] is being defaulted to: Bid.
+[EL Config]: metadata: 2017-05-22 23:03:25.829--ServerSession(135184888)--Thread(Thread[main,5,main])--The table name for entity [class auction.domain.Bid] is being defaulted to: BID.
+[EL Config]: metadata: 2017-05-22 23:03:25.83--ServerSession(135184888)--Thread(Thread[main,5,main])--The column name for element [amount] is being defaulted to: AMOUNT.
+[EL Config]: metadata: 2017-05-22 23:03:25.83--ServerSession(135184888)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2017-05-22 23:03:25.83--ServerSession(135184888)--Thread(Thread[main,5,main])--The column name for element [time] is being defaulted to: TIME.
 </system-out>
   </testcase>
-  <testcase classname="auction.service.JPARegistrationMgrTest" name="getUser" time="0.019">
+  <testcase classname="auction.service.JPARegistrationMgrTest" name="getUser" time="0.024">
     <error message="
 Exception Description: An exception was thrown while searching for persistence archives with ClassLoader: sun.misc.Launcher$AppClassLoader@6bc7c054
 Internal Exception: javax.persistence.PersistenceException: Exception [EclipseLink-28018] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.EntityManagerSetupException
@@ -238,20 +238,20 @@ Exception Description: The type [class nl.fontys.util.FontysTime] for the attrib
 	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.predeploy(EntityManagerSetupImpl.java:1869)
 	... 35 more
 </error>
-    <system-out>[EL Config]: metadata: 2017-05-22 22:01:20.995--ServerSession(1634132079)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Bid] is set to [FIELD].
-[EL Config]: metadata: 2017-05-22 22:01:20.995--ServerSession(1634132079)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field buyer] is being defaulted to: class auction.domain.User.
-[EL Config]: metadata: 2017-05-22 22:01:20.996--ServerSession(1634132079)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Item] is set to [FIELD].
-[EL Config]: metadata: 2017-05-22 22:01:20.996--ServerSession(1634132079)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field seller] is being defaulted to: class auction.domain.User.
-[EL Config]: metadata: 2017-05-22 22:01:20.996--ServerSession(1634132079)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to one mapping element [field highest] is being defaulted to: class auction.domain.Bid.
-[EL Config]: metadata: 2017-05-22 22:01:20.998--ServerSession(1634132079)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.User] is set to [FIELD].
-[EL Config]: metadata: 2017-05-22 22:01:20.998--ServerSession(1634132079)--Thread(Thread[main,5,main])--The alias name for the entity class [class auction.domain.Bid] is being defaulted to: Bid.
-[EL Config]: metadata: 2017-05-22 22:01:20.998--ServerSession(1634132079)--Thread(Thread[main,5,main])--The table name for entity [class auction.domain.Bid] is being defaulted to: BID.
-[EL Config]: metadata: 2017-05-22 22:01:20.998--ServerSession(1634132079)--Thread(Thread[main,5,main])--The column name for element [amount] is being defaulted to: AMOUNT.
-[EL Config]: metadata: 2017-05-22 22:01:20.999--ServerSession(1634132079)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
-[EL Config]: metadata: 2017-05-22 22:01:20.999--ServerSession(1634132079)--Thread(Thread[main,5,main])--The column name for element [time] is being defaulted to: TIME.
+    <system-out>[EL Config]: metadata: 2017-05-22 23:03:25.849--ServerSession(1027591600)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Bid] is set to [FIELD].
+[EL Config]: metadata: 2017-05-22 23:03:25.851--ServerSession(1027591600)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field buyer] is being defaulted to: class auction.domain.User.
+[EL Config]: metadata: 2017-05-22 23:03:25.851--ServerSession(1027591600)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Item] is set to [FIELD].
+[EL Config]: metadata: 2017-05-22 23:03:25.851--ServerSession(1027591600)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field seller] is being defaulted to: class auction.domain.User.
+[EL Config]: metadata: 2017-05-22 23:03:25.852--ServerSession(1027591600)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to one mapping element [field highest] is being defaulted to: class auction.domain.Bid.
+[EL Config]: metadata: 2017-05-22 23:03:25.854--ServerSession(1027591600)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.User] is set to [FIELD].
+[EL Config]: metadata: 2017-05-22 23:03:25.854--ServerSession(1027591600)--Thread(Thread[main,5,main])--The alias name for the entity class [class auction.domain.Bid] is being defaulted to: Bid.
+[EL Config]: metadata: 2017-05-22 23:03:25.854--ServerSession(1027591600)--Thread(Thread[main,5,main])--The table name for entity [class auction.domain.Bid] is being defaulted to: BID.
+[EL Config]: metadata: 2017-05-22 23:03:25.855--ServerSession(1027591600)--Thread(Thread[main,5,main])--The column name for element [amount] is being defaulted to: AMOUNT.
+[EL Config]: metadata: 2017-05-22 23:03:25.855--ServerSession(1027591600)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2017-05-22 23:03:25.855--ServerSession(1027591600)--Thread(Thread[main,5,main])--The column name for element [time] is being defaulted to: TIME.
 </system-out>
   </testcase>
-  <testcase classname="auction.service.JPARegistrationMgrTest" name="getUsers" time="0.035">
+  <testcase classname="auction.service.JPARegistrationMgrTest" name="getUsers" time="0.051">
     <error message="
 Exception Description: An exception was thrown while searching for persistence archives with ClassLoader: sun.misc.Launcher$AppClassLoader@6bc7c054
 Internal Exception: javax.persistence.PersistenceException: Exception [EclipseLink-28018] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.EntityManagerSetupException
@@ -332,17 +332,17 @@ Exception Description: The type [class nl.fontys.util.FontysTime] for the attrib
 	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.predeploy(EntityManagerSetupImpl.java:1869)
 	... 35 more
 </error>
-    <system-out>[EL Config]: metadata: 2017-05-22 22:01:21.02--ServerSession(513700442)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Bid] is set to [FIELD].
-[EL Config]: metadata: 2017-05-22 22:01:21.021--ServerSession(513700442)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field buyer] is being defaulted to: class auction.domain.User.
-[EL Config]: metadata: 2017-05-22 22:01:21.021--ServerSession(513700442)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Item] is set to [FIELD].
-[EL Config]: metadata: 2017-05-22 22:01:21.022--ServerSession(513700442)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field seller] is being defaulted to: class auction.domain.User.
-[EL Config]: metadata: 2017-05-22 22:01:21.022--ServerSession(513700442)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to one mapping element [field highest] is being defaulted to: class auction.domain.Bid.
-[EL Config]: metadata: 2017-05-22 22:01:21.025--ServerSession(513700442)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.User] is set to [FIELD].
-[EL Config]: metadata: 2017-05-22 22:01:21.026--ServerSession(513700442)--Thread(Thread[main,5,main])--The alias name for the entity class [class auction.domain.Bid] is being defaulted to: Bid.
-[EL Config]: metadata: 2017-05-22 22:01:21.027--ServerSession(513700442)--Thread(Thread[main,5,main])--The table name for entity [class auction.domain.Bid] is being defaulted to: BID.
-[EL Config]: metadata: 2017-05-22 22:01:21.029--ServerSession(513700442)--Thread(Thread[main,5,main])--The column name for element [amount] is being defaulted to: AMOUNT.
-[EL Config]: metadata: 2017-05-22 22:01:21.03--ServerSession(513700442)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
-[EL Config]: metadata: 2017-05-22 22:01:21.031--ServerSession(513700442)--Thread(Thread[main,5,main])--The column name for element [time] is being defaulted to: TIME.
+    <system-out>[EL Config]: metadata: 2017-05-22 23:03:25.875--ServerSession(1684792003)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Bid] is set to [FIELD].
+[EL Config]: metadata: 2017-05-22 23:03:25.878--ServerSession(1684792003)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field buyer] is being defaulted to: class auction.domain.User.
+[EL Config]: metadata: 2017-05-22 23:03:25.879--ServerSession(1684792003)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Item] is set to [FIELD].
+[EL Config]: metadata: 2017-05-22 23:03:25.88--ServerSession(1684792003)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field seller] is being defaulted to: class auction.domain.User.
+[EL Config]: metadata: 2017-05-22 23:03:25.882--ServerSession(1684792003)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to one mapping element [field highest] is being defaulted to: class auction.domain.Bid.
+[EL Config]: metadata: 2017-05-22 23:03:25.894--ServerSession(1684792003)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.User] is set to [FIELD].
+[EL Config]: metadata: 2017-05-22 23:03:25.895--ServerSession(1684792003)--Thread(Thread[main,5,main])--The alias name for the entity class [class auction.domain.Bid] is being defaulted to: Bid.
+[EL Config]: metadata: 2017-05-22 23:03:25.896--ServerSession(1684792003)--Thread(Thread[main,5,main])--The table name for entity [class auction.domain.Bid] is being defaulted to: BID.
+[EL Config]: metadata: 2017-05-22 23:03:25.898--ServerSession(1684792003)--Thread(Thread[main,5,main])--The column name for element [amount] is being defaulted to: AMOUNT.
+[EL Config]: metadata: 2017-05-22 23:03:25.9--ServerSession(1684792003)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2017-05-22 23:03:25.901--ServerSession(1684792003)--Thread(Thread[main,5,main])--The column name for element [time] is being defaulted to: TIME.
 </system-out>
   </testcase>
 </testsuite>

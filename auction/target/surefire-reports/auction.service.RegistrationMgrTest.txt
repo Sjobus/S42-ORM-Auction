@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: auction.service.RegistrationMgrTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.093 sec <<< FAILURE!
-registerUser(auction.service.RegistrationMgrTest)  Time elapsed: 0.009 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.078 sec <<< FAILURE!
+registerUser(auction.service.RegistrationMgrTest)  Time elapsed: 0 sec  <<< ERROR!
 Local Exception Stack: 
 Exception [EclipseLink-30005] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.PersistenceUnitLoadingException
 Exception Description: An exception was thrown while searching for persistence archives with ClassLoader: sun.misc.Launcher$AppClassLoader@6bc7c054
@@ -150,7 +150,7 @@ Exception Description: The type [class nl.fontys.util.FontysTime] for the attrib
 	at org.eclipse.persistence.internal.jpa.deployment.PersistenceUnitProcessor.processORMetadata(PersistenceUnitProcessor.java:585)
 	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.predeploy(EntityManagerSetupImpl.java:1869)
 	... 34 more
-getUsers(auction.service.RegistrationMgrTest)  Time elapsed: 0.001 sec  <<< ERROR!
+getUsers(auction.service.RegistrationMgrTest)  Time elapsed: 0.003 sec  <<< ERROR!
 Local Exception Stack: 
 Exception [EclipseLink-30005] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.PersistenceUnitLoadingException
 Exception Description: An exception was thrown while searching for persistence archives with ClassLoader: sun.misc.Launcher$AppClassLoader@6bc7c054

@@ -27,7 +27,7 @@ public class SellerMgrTest {
     public void setUp() throws Exception {
         registrationMgr = new RegistrationMgr(em);
         auctionMgr = new AuctionMgr(em);
-        sellerMgr = new SellerMgr();
+        sellerMgr = new SellerMgr(em);
     }
 
     /**

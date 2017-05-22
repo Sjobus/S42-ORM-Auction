@@ -1,5 +1,6 @@
 package auction.domain;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import nl.fontys.util.Money;
 @Entity
@@ -8,7 +9,7 @@ import nl.fontys.util.Money;
     @NamedQuery(name = "ItemDAO.findById", query = "select a from Item as a where a.id = :id"),
     @NamedQuery(name = "ItemDAO.count", query = "select count(a) from Item as a")
 })
-public class Item implements Comparable {
+public class Item implements Serializable, Comparable {
     @Id
     private Long id;
     private Category category;

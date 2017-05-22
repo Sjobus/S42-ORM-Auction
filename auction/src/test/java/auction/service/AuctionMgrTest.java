@@ -27,7 +27,7 @@ public class AuctionMgrTest {
     public void setUp() throws Exception {
         registrationMgr = new RegistrationMgr(em);
         auctionMgr = new AuctionMgr(em);
-        sellerMgr = new SellerMgr();
+        sellerMgr = new SellerMgr(em);
     }
 
     @Test
@@ -56,13 +56,15 @@ public class AuctionMgrTest {
         Category cat = new Category("cat3");
         Item item1 = sellerMgr.offerItem(seller3, cat, omsch);
         Item item2 = sellerMgr.offerItem(seller4, cat, omsch);
-
+        
+        System.out.println("Begin 1");
         ArrayList<Item> res = (ArrayList<Item>) auctionMgr.findItemByDescription(omsch2);
         assertEquals(0, res.size());
-
+        System.out.println("Klaar 1");
+        System.out.println("Begin 2");
         res = (ArrayList<Item>) auctionMgr.findItemByDescription(omsch);
         assertEquals(2, res.size());
-
+        System.out.println("Klaar 2");
     }
 
     @Test

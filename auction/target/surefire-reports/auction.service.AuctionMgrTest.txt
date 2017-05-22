@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: auction.service.AuctionMgrTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.811 sec <<< FAILURE!
-newBid(auction.service.AuctionMgrTest)  Time elapsed: 0.01 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.598 sec <<< FAILURE!
+newBid(auction.service.AuctionMgrTest)  Time elapsed: 0.008 sec  <<< ERROR!
 Local Exception Stack: 
 Exception [EclipseLink-30005] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.PersistenceUnitLoadingException
 Exception Description: An exception was thrown while searching for persistence archives with ClassLoader: sun.misc.Launcher$AppClassLoader@6bc7c054
