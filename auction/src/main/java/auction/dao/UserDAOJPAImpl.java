@@ -30,12 +30,16 @@ public class UserDAOJPAImpl implements UserDAO {
 
     @Override
     public void edit(User user) {
+        em.getTransaction().begin();
         em.merge(user);
+        em.getTransaction().commit();
     }
 
     @Override
     public void remove(User user) {
+        em.getTransaction().begin();
         em.remove(em.merge(user));
+        em.getTransaction().commit();
     }
     
     @Override
