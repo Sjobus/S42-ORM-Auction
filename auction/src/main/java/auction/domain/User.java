@@ -13,7 +13,7 @@ public class User implements Serializable {
 
     @Id
     private String email;
-    //TODO: zet in db
+    @OneToMany (mappedBy = "user")
     private Set<Item> offeredItems;
     
     public User ()
