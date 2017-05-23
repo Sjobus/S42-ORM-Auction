@@ -81,8 +81,13 @@ public class Item implements Serializable, Comparable {
     @Override
     public int hashCode() 
     {
-        int result = 17;
-        result = 31 * result * this.description.hashCode();
+        final int prime = 31;
+        int result = 1;
+        result = prime * result +((description == null) ? 0 : description.hashCode());
+        result = prime * result + id.intValue();
+        result = prime * result + ((category == null) ? 0 : category.hashCode());
+        result = prime * result + ((seller == null) ? 0 : seller.hashCode());
+        result = prime * result + ((highest == null) ? 0 : highest.hashCode());
         return result;
     }
 }
