@@ -1,6 +1,7 @@
 package auction.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.*;
 import nl.fontys.util.Money;
 @Entity
@@ -63,13 +64,23 @@ public class Item implements Serializable, Comparable {
         return -1;
     }
 
-    public boolean equals(Object o) {
-        //TODO
+    @Override
+    public boolean equals(Object o) 
+    {                           
+        if(o instanceof Item)
+        {
+           if(this == o)
+               return true;
+           else
+               return false;
+        }           
         return false;
     }
 
-    public int hashCode() {
-        //TODO
-        return 0;
+    // zal we lniet werken. Mvg Sibe
+    @Override
+    public int hashCode() 
+    {
+        return Objects.hashCode(this.id);
     }
 }
