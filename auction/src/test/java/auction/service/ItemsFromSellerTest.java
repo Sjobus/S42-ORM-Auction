@@ -125,4 +125,47 @@ public class ItemsFromSellerTest {
         assertTrue(it30.hasNext());
 
     }
+    
+        @Test
+//    @Ignore
+    public void bidirectioneelTest() {
+        //TODO: AFMAKEN
+        String email = "ifu1@nl";
+        String omsch1 = "omsch_ifu1";
+        String omsch2 = "omsch_ifu2";
+
+        Category cat = new Category("cat2");
+
+        User user10 = registrationMgr.registerUser(email);
+        Item item10 = sellerMgr.offerItem(user10, cat, omsch1);
+        Iterator<Item> it = user10.getOfferedItems();
+        // testing number of items of java object
+        assertTrue(it.hasNext());
+        
+        // now testing number of items for same user fetched from db.
+        User user11 = registrationMgr.getUser(email);
+        Iterator<Item> it11 = user11.getOfferedItems();
+        assertTrue(it11.hasNext());
+        it11.next();
+        assertFalse(it11.hasNext());
+
+        // Explain difference in above two tests for te iterator of 'same' user
+
+        
+        
+        User user20 = registrationMgr.getUser(email);
+        Item item20 = sellerMgr.offerItem(user20, cat, omsch2);
+        Iterator<Item> it20 = user20.getOfferedItems();
+        assertTrue(it20.hasNext());
+        it20.next();
+        assertTrue(it20.hasNext());
+
+
+        User user30 = item20.getSeller();
+        Iterator<Item> it30 = user30.getOfferedItems();
+        assertTrue(it30.hasNext());
+        it30.next();
+        assertTrue(it30.hasNext());
+
+    }
 }
