@@ -5,6 +5,7 @@
  */
 package auction.domain;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 
 @Entity
@@ -12,7 +13,7 @@ import javax.persistence.Entity;
  *
  * @author sibev
  */
-public class Furniture extends Item{
+public class Furniture extends Item implements Serializable{
     
     public String material;
 

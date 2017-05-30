@@ -3,7 +3,7 @@ package auction.service;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import util.DatabaseCleaner;
+import utill.DatabaseCleaner;
 import auction.domain.*;
 import java.util.Iterator;
 import nl.fontys.util.Money;
@@ -13,21 +13,23 @@ import static org.junit.Assert.*;
 
 public class FurnitureAndPaintingTest {
 
-    final EntityManagerFactory emf = Persistence.createEntityManagerFactory("auctionPU");
-    final EntityManager em = emf.createEntityManager();
     private AuctionMgr auctionMgr;
     private RegistrationMgr registrationMgr;
     private SellerMgr sellerMgr;
+    private EntityManagerFactory emf;
+    private EntityManager em;
 
     public FurnitureAndPaintingTest() {
     }
 
     @Before
     public void setUp() throws Exception {
-        registrationMgr = new RegistrationMgr();
-        auctionMgr = new AuctionMgr();
-        sellerMgr = new SellerMgr();
-        new DatabaseCleaner(em).clean();
+        emf = Persistence.createEntityManagerFactory("auctionPU");
+        em = emf.createEntityManager();
+        registrationMgr = new RegistrationMgr(em);
+        auctionMgr = new AuctionMgr(em);
+        sellerMgr = new SellerMgr(em);
+        new DatabaseCleaner(emf.createEntityManager()).clean();
     }
 
     @Test

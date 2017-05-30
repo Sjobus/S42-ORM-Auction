@@ -1,7 +1,9 @@
 package utill;
 
 import auction.domain.Bid;
+import auction.domain.Furniture;
 import auction.domain.Item;
+import auction.domain.Painting;
 import auction.domain.User;
 import java.sql.SQLException;
 import javax.persistence.EntityManager;
@@ -12,6 +14,8 @@ public class DatabaseCleaner {
     private static final Class<?>[] ENTITY_TYPES = {
         User.class,
         Item.class,
+        Painting.class,
+        Furniture.class,
         Bid.class
     };
     private final EntityManager em;
