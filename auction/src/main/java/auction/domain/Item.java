@@ -18,7 +18,7 @@ public class Item implements Serializable, Comparable {
     
     @ManyToOne
     private User seller;
-    @OneToOne
+    @OneToOne(mappedBy = "madeFor") 
     private Bid highest;
     public Item()
     {
