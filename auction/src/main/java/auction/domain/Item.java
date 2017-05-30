@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import nl.fontys.util.Money;
 @Entity
+@Inheritance (strategy = InheritanceType.TABLE_PER_CLASS)
 @NamedQueries({
     @NamedQuery(name = "ItemDAO.findByDescription", query = "select a from Item as a where a.description = :description"),
     @NamedQuery(name = "ItemDAO.findById", query = "select a from Item as a where a.id = :id"),
