@@ -23,10 +23,11 @@ public class Bid implements Serializable{
         
     }
     
-    public Bid(User buyer, Money amount) {
+    public Bid(User buyer, Money amount, Item item) {
         this.buyer = buyer;
         this.amount = amount;
         this.time = FontysTime.now();
+        this.madeFor = item;
     }
 
     public FontysTime getTime() {
@@ -39,5 +40,10 @@ public class Bid implements Serializable{
 
     public Money getAmount() {
         return amount;
+    }
+    
+    public Item getMadeFor()
+    {
+        return madeFor;
     }
 }

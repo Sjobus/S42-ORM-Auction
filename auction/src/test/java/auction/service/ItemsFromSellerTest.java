@@ -1,11 +1,13 @@
 package auction.service;
 
+import auction.domain.Bid;
 import org.junit.Ignore;
 import javax.persistence.*;
 import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
 import java.util.Iterator;
+import nl.fontys.util.Money;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -132,40 +134,34 @@ public class ItemsFromSellerTest {
         //TODO: AFMAKEN
         String email = "ifu1@nl";
         String omsch1 = "omsch_ifu1";
-        String omsch2 = "omsch_ifu2";
 
         Category cat = new Category("cat2");
 
+        //Create seller
         User user10 = registrationMgr.registerUser(email);
+        //Create item to be sold
         Item item10 = sellerMgr.offerItem(user10, cat, omsch1);
-        Iterator<Item> it = user10.getOfferedItems();
-        // testing number of items of java object
-        assertTrue(it.hasNext());
         
-        // now testing number of items for same user fetched from db.
-        User user11 = registrationMgr.getUser(email);
-        Iterator<Item> it11 = user11.getOfferedItems();
-        assertTrue(it11.hasNext());
-        it11.next();
-        assertFalse(it11.hasNext());
-
-        // Explain difference in above two tests for te iterator of 'same' user
-
+        //Create Buyer
+        String emailBuyer = "buyer@nl";
+        User userBuyer = registrationMgr.registerUser(emailBuyer);
         
+        assertNull(item10.getHighestBid());
         
-        User user20 = registrationMgr.getUser(email);
-        Item item20 = sellerMgr.offerItem(user20, cat, omsch2);
-        Iterator<Item> it20 = user20.getOfferedItems();
-        assertTrue(it20.hasNext());
-        it20.next();
-        assertTrue(it20.hasNext());
-
-
-        User user30 = item20.getSeller();
-        Iterator<Item> it30 = user30.getOfferedItems();
-        assertTrue(it30.hasNext());
-        it30.next();
-        assertTrue(it30.hasNext());
-
+        //Place a bid on the item
+        Bid theBid = auctionMgr.newBid(item10, userBuyer, new Money(10, "Dollar"));
+        
+        assertNotNull(theBid);
+        
+        assertNotNull(theBid.getMadeFor());
+        
+        for(Item i : auctionMgr.findItemByDescription(omsch1))
+        {
+            Bid bid = i.getHighestBid();
+            if(bid != null)
+            {
+                assertSame(i, bid.getMadeFor());
+            }
+        }
     }
 }
