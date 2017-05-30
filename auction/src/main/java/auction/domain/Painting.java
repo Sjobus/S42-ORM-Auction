@@ -8,11 +8,11 @@ package auction.domain;
 import java.io.Serializable;
 import javax.persistence.Entity;
 
-@Entity
 /**
  *
  * @author sibev
  */
+@Entity
 public class Painting extends Item implements Serializable {
     
     public String title;

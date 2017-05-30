@@ -11,7 +11,6 @@ import auction.domain.Bid;
 import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

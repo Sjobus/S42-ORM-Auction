@@ -1,7 +1,6 @@
 package auction.domain;
 
 import java.io.Serializable;
-import java.util.Objects;
 import javax.persistence.*;
 import nl.fontys.util.Money;
 @Entity
