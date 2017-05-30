@@ -13,7 +13,7 @@ public class DatabaseCleaner {
 
     private static final Class<?>[] ENTITY_TYPES = {
         User.class,
-        Item.class,
+        //Item.class,
         Painting.class,
         Furniture.class,
         Bid.class

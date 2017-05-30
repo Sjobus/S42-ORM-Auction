@@ -25,11 +25,11 @@ public class SellerMgr {
      * @return het item aangeboden door seller, behorende tot de categorie cat
      *         en met de beschrijving description
      */
-    public Item offerItem(User seller, Category cat, String description) {
-        Item newItem = new Item(seller, cat, description);
-        itemDAO.create(newItem);
-        return newItem;
-    }
+//    public Item offerItem(User seller, Category cat, String description) {
+//        Item newItem = new Item(seller, cat, description);
+//        itemDAO.create(newItem);
+//        return newItem;
+//    }
     
     public Item offerFurniture(User seller, Category cat, String description, String material) {
         Item newItem = new Furniture(material, seller, cat, description);

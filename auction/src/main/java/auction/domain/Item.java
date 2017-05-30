@@ -4,13 +4,13 @@ import java.io.Serializable;
 import javax.persistence.*;
 import nl.fontys.util.Money;
 @Entity
-@Inheritance (strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance (strategy = InheritanceType.JOINED)
 @NamedQueries({
     @NamedQuery(name = "ItemDAO.findByDescription", query = "select a from Item as a where a.description = :description"),
     @NamedQuery(name = "ItemDAO.findById", query = "select a from Item as a where a.id = :id"),
     @NamedQuery(name = "ItemDAO.count", query = "select count(a) from Item as a")
 })
-public class Item implements Serializable, Comparable {
+public abstract class Item implements Serializable, Comparable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Category category;
