@@ -15,6 +15,9 @@ public class Bid implements Serializable{
     @ManyToOne
     private User buyer;
     private Money amount;
+    @OneToOne @JoinColumn(nullable = false)
+    private Item madeFor;
+    
     public Bid()
     {
         
