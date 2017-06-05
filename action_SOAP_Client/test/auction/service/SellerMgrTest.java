@@ -25,7 +25,6 @@ public class SellerMgrTest {
         User user1 = registerUser("xx@nl");
         Category cat = new Category();
         Item item1 = offerItem(user1, cat, omsch);
-        assertEquals(omsch, item1);
         assertNotNull(item1);
     }
 
