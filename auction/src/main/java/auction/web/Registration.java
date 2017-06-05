@@ -9,8 +9,6 @@ import auction.domain.User;
 import auction.service.RegistrationMgr;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -21,13 +19,9 @@ public class Registration
 {
     
     private RegistrationMgr registrationMgr;
-    private EntityManagerFactory emf;
-    private EntityManager em;
     
-    Registration()
+    Registration(EntityManager em)
     {
-        emf = Persistence.createEntityManagerFactory("auctionPU");
-        em = emf.createEntityManager();
         registrationMgr = new RegistrationMgr(em);
     }
     
@@ -38,7 +32,7 @@ public class Registration
      */
     public User registerUser(String email)
     {
-        return null;
+        return registrationMgr.registerUser(email);
     }
     
     /**
@@ -48,6 +42,6 @@ public class Registration
      */
     public User getUser(String email)
     {
-        return null;
+        return registrationMgr.getUser(email);
     }
 }

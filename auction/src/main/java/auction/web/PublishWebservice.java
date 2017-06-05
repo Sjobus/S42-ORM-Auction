@@ -5,6 +5,9 @@
  */
 package auction.web;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.xml.ws.Endpoint;
 
 /**
@@ -16,8 +19,15 @@ public class PublishWebservice {
     private static final String url = "http://localhost:6080/WebAuction";
     private static final String url2 = "http://localhost:6080/WebRegistration";
     
+    private static EntityManagerFactory emf;
+    private static EntityManager em;
+        
     public static void main(String[] args){
-        Endpoint.publish(url, new Auction());
-        Endpoint.publish(url2, new Registration());
+        emf = Persistence.createEntityManagerFactory("auctionPU");
+        em = emf.createEntityManager();
+        
+        Endpoint.publish(url, new Auction(em));
+        Endpoint.publish(url2, new Registration(em));
+
     }
 }

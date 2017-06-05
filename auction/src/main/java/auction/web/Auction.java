@@ -14,8 +14,6 @@ import auction.service.SellerMgr;
 import java.util.List;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import nl.fontys.util.Money;
 
 /**
@@ -27,13 +25,9 @@ public class Auction
 {
     private AuctionMgr auctionMgr;
     private SellerMgr sellerMgr;
-    private EntityManagerFactory emf;
-    private EntityManager em;
     
-    Auction()
+    Auction(EntityManager em)
     {
-        emf = Persistence.createEntityManagerFactory("auctionPU");
-        em = emf.createEntityManager();
         auctionMgr = new AuctionMgr(em);
         sellerMgr = new SellerMgr(em);
     }
@@ -45,7 +39,7 @@ public class Auction
      */
     public Item getItem(Long id)
     {
-        return null;
+        return auctionMgr.getItem(id);
     }
     
     /**
@@ -55,7 +49,7 @@ public class Auction
      */
     public List<Item> findItemByDescription(String description)
     {
-        return null;
+        return auctionMgr.findItemByDescription(description);
     }
     
     /**
@@ -67,7 +61,7 @@ public class Auction
      */
     public Bid newBid(Item item, User buyer, Money amount)
     {
-        return null;
+        return auctionMgr.newBid(item, buyer, amount);
     }
     
     /**
@@ -79,7 +73,7 @@ public class Auction
      */
     public Item offerItem(User seller, Category car, String description)
     {
-        return null;
+        return sellerMgr.offerItem(seller, car, description);
     }
     
     /**
@@ -89,6 +83,6 @@ public class Auction
      */
     public boolean revokeItem(Item item)
     {
-        return false;
+        return sellerMgr.revokeItem(item);
     }
 }
