@@ -18,6 +18,6 @@ public class PublishWebservice {
     
     public static void main(String[] args){
         Endpoint.publish(url, new Auction());
-        Endpoint.publish(url2, new Auction());
+        Endpoint.publish(url2, new Registration());
     }
 }
