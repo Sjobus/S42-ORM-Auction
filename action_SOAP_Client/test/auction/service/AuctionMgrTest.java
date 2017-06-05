@@ -1,5 +1,6 @@
 package auction.service;
 
+import static action_client.Action_Client.*;
 import static org.junit.Assert.*;
 
 import nl.fontys.util.Money;
@@ -7,32 +8,16 @@ import nl.fontys.util.Money;
 import org.junit.Before;
 import org.junit.Test;
 
-import auction.domain.Bid;
-import auction.domain.Category;
-import auction.domain.Item;
-import auction.domain.User;
-import java.util.ArrayList;
+import auction.web.Bid;
+import auction.web.Category;
+import auction.web.Item;
+import auction.web.User;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import utill.DatabaseCleaner;
 
 public class AuctionMgrTest {
 
-    private AuctionMgr auctionMgr;
-    private RegistrationMgr registrationMgr;
-    private SellerMgr sellerMgr;
-    private EntityManagerFactory emf;
-    private EntityManager em;
     @Before
     public void setUp() throws Exception {
-        emf = Persistence.createEntityManagerFactory("auctionPU");
-        em = emf.createEntityManager();
-        registrationMgr = new RegistrationMgr(em);
-        auctionMgr = new AuctionMgr(em);
-        sellerMgr = new SellerMgr(em);
-        new DatabaseCleaner(emf.createEntityManager()).clean();
     }
 
     @Test
@@ -41,10 +26,10 @@ public class AuctionMgrTest {
         String email = "xx2@nl";
         String omsch = "omsch";
 
-        User seller1 = registrationMgr.registerUser(email);
+        User seller1 = registerUser(email);
         Category cat = new Category("cat2");
-        Item item1 = sellerMgr.offerItem(seller1, cat, omsch);
-        Item item2 = auctionMgr.getItem(item1.getId());
+        Item item1 = offerItem(seller1, cat, omsch);
+        Item item2 = getItem(item1.getId());
         assertEquals(omsch, item2.getDescription());
         assertEquals(email, item2.getSeller().getEmail());
     }
@@ -56,18 +41,18 @@ public class AuctionMgrTest {
         String email4 = "xx4@nl";
         String omsch2 = "omsch2";
 
-        User seller3 = registrationMgr.registerUser(email3);
-        User seller4 = registrationMgr.registerUser(email4);
+        User seller3 = registerUser(email3);
+        User seller4 = registerUser(email4);
         Category cat = new Category("cat3");
-        Item item1 = sellerMgr.offerItem(seller3, cat, omsch);
-        Item item2 = sellerMgr.offerItem(seller4, cat, omsch);
+        Item item1 = offerItem(seller3, cat, omsch);
+        Item item2 = offerItem(seller4, cat, omsch);
         
         System.out.println("Begin 1");
-        List<Item> res = (List<Item>) auctionMgr.findItemByDescription(omsch2);
+        List<Item> res = (List<Item>) findItemByDescription(omsch2);
         assertEquals(0, res.size());
         System.out.println("Klaar 1");
         System.out.println("Begin 2");
-        res = (List<Item>) auctionMgr.findItemByDescription(omsch);
+        res = (List<Item>) findItemByDescription(omsch);
         assertEquals(2, res.size());
         System.out.println("Klaar 2");
     }
@@ -80,21 +65,21 @@ public class AuctionMgrTest {
         String emailb2 = "bb2@nl";
         String omsch = "omsch_bb";
 
-        User seller = registrationMgr.registerUser(email);
-        User buyer = registrationMgr.registerUser(emailb);
-        User buyer2 = registrationMgr.registerUser(emailb2);
+        User seller = registerUser(email);
+        User buyer = registerUser(emailb);
+        User buyer2 = registerUser(emailb2);
         // eerste bod
         Category cat = new Category("cat9");
-        Item item1 = sellerMgr.offerItem(seller, cat, omsch);
-        Bid new1 = auctionMgr.newBid(item1, buyer, new Money(10, "eur"));
+        Item item1 = offerItem(seller, cat, omsch);
+        Bid new1 = newBid(item1, buyer, new Money(10, "eur"));
         assertEquals(emailb, new1.getBuyer().getEmail());
 
         // lager bod
-        Bid new2 = auctionMgr.newBid(item1, buyer2, new Money(9, "eur"));
+        Bid new2 = newBid(item1, buyer2, new Money(9, "eur"));
         assertNull(new2);
 
         // hoger bod
-        Bid new3 = auctionMgr.newBid(item1, buyer2, new Money(11, "eur"));
+        Bid new3 = newBid(item1, buyer2, new Money(11, "eur"));
         assertEquals(emailb2, new3.getBuyer().getEmail());
     }
 }
