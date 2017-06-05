@@ -1,0 +1,8 @@
+/SE42_Les_06_Action_SOAP_Client/nbproject/private/
+/action_SOAP_Client/nbproject/private/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
