@@ -1,37 +1,18 @@
 package auction.service;
 
+import static action_client.Action_Client.*;
 import static org.junit.Assert.*;
-
-import nl.fontys.util.Money;
 
 import org.junit.Before;
 import org.junit.Test;
 
-
-
-import auction.domain.Category;
-import auction.domain.Item;
-import auction.domain.User;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import utill.DatabaseCleaner;
+import auction.web.*;
 
 public class SellerMgrTest {
 
-    private AuctionMgr auctionMgr;
-    private RegistrationMgr registrationMgr;
-    private SellerMgr sellerMgr;
-    private EntityManagerFactory emf;
-    private EntityManager em;
     @Before
     public void setUp() throws Exception {
-        emf = Persistence.createEntityManagerFactory("auctionPU");
-        em = emf.createEntityManager();
-        registrationMgr = new RegistrationMgr(em);
-        auctionMgr = new AuctionMgr(em);
-        sellerMgr = new SellerMgr(em);
-        new DatabaseCleaner(emf.createEntityManager()).clean();
+
     }
 
     /**
@@ -41,11 +22,11 @@ public class SellerMgrTest {
     public void testOfferItem() {
         String omsch = "omsch";
 
-        User user1 = registrationMgr.registerUser("xx@nl");
-        Category cat = new Category("cat1");
-        Item item1 = sellerMgr.offerItem(user1, cat, omsch);
-        assertEquals(omsch, item1.getDescription());
-        assertNotNull(item1.getId());
+        User user1 = registerUser("xx@nl");
+        Category cat = new Category();
+        Item item1 = offerItem(user1, cat, omsch);
+        assertEquals(omsch, item1);
+        assertNotNull(item1);
     }
 
     /**
@@ -56,29 +37,24 @@ public class SellerMgrTest {
         String omsch = "omsch";
         String omsch2 = "omsch2";
         
-    
-        User seller = registrationMgr.registerUser("sel@nl");
-        User buyer = registrationMgr.registerUser("buy@nl");
-        Category cat = new Category("cat1");
+        User seller = registerUser("sel@nl");
+        User buyer = registerUser("buy@nl");
+        Category cat = new Category();
         
             // revoke before bidding
-        Item item1 = sellerMgr.offerItem(seller, cat, omsch);
-        boolean res = sellerMgr.revokeItem(item1);
+        Item item1 = offerItem(seller, cat, omsch);
+        boolean res = revokeItem(item1);
         assertTrue(res);
-        int count = auctionMgr.findItemByDescription(omsch).size();
+        int count = findItemByDescription(omsch).size();
         assertEquals(0, count);
         
             // revoke after bid has been made
-        Item item2 = sellerMgr.offerItem(seller, cat, omsch2);
-        auctionMgr.newBid(item2, buyer, new Money(100, "Euro"));
-        boolean res2 = sellerMgr.revokeItem(item2);
+        Item item2 = offerItem(seller, cat, omsch2);
+        newBid(item2, buyer, new Money());
+        boolean res2 = revokeItem(item2);
         assertFalse(res2);
-        int count2 = auctionMgr.findItemByDescription(omsch2).size();
+        int count2 = findItemByDescription(omsch2).size();
         assertEquals(1, count2);
-        
-        
-        
-        
     }
 
 }
