@@ -19,7 +19,7 @@
     <target name="wsimport-client-WebAuction" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebAuction"/>
         <property name="wsdl-WebAuction" location="xml-resources/web-service-references/WebAuction/wsdl/localhost_6080/WebAuction.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebAuction" destdir="${build.generated.dir}/jax-wsCache/WebAuction" wsdl="${wsdl-WebAuction}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:6080/WebAuction?wsdl" xnocompile="true" xendorsed="true">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebAuction" destdir="${build.generated.dir}/jax-wsCache/WebAuction" wsdl="${wsdl-WebAuction}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:6080/WebAuction?WSDL" xnocompile="true" xendorsed="true">
             <depends file="${wsdl-WebAuction}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebAuction"/>
         </wsimport>
@@ -36,7 +36,7 @@
     <target name="wsimport-client-WebRegistration" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebRegistration"/>
         <property name="wsdl-WebRegistration" location="xml-resources/web-service-references/WebRegistration/wsdl/localhost_6080/WebRegistration.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebRegistration" destdir="${build.generated.dir}/jax-wsCache/WebRegistration" wsdl="${wsdl-WebRegistration}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:6080/WebRegistration?wsdl" xnocompile="true" xendorsed="true">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebRegistration" destdir="${build.generated.dir}/jax-wsCache/WebRegistration" wsdl="${wsdl-WebRegistration}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:6080/WebRegistration?WSDL" xnocompile="true" xendorsed="true">
             <depends file="${wsdl-WebRegistration}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebRegistration"/>
         </wsimport>

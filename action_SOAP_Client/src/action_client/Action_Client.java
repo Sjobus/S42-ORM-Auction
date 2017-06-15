@@ -63,6 +63,4 @@ public class Action_Client {
         auction.web.Registration port = service.getRegistrationPort();
         return port.registerUser(arg0);
     }
-    
-    
 }

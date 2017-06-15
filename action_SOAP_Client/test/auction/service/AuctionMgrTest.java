@@ -1,12 +1,12 @@
 package auction.service;
 
 import static action_client.Action_Client.*;
+import auction.web.*;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import auction.web.*;
 import java.util.List;
 
 public class AuctionMgrTest {
@@ -66,7 +66,6 @@ public class AuctionMgrTest {
         Item item1 = offerItem(seller, cat, omsch);
         Bid new1 = newBid(item1, buyer, new Money());
         assertNotNull(new1);
-
         // lager bod
         Bid new2 = newBid(item1, buyer2, new Money());
         assertNull(new2);

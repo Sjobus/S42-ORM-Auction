@@ -4,4 +4,6 @@
     <system systemId="http://localhost:6080/WebAuction?xsd=1" uri="wsdl/localhost_6080/WebAuction.xsd_1.xsd"/>
     <system systemId="http://localhost:6080/WebRegistration?wsdl" uri="wsdl/localhost_6080/WebRegistration.wsdl"/>
     <system systemId="http://localhost:6080/WebRegistration?xsd=1" uri="wsdl/localhost_6080/WebRegistration.xsd_1.xsd"/>
+    <system systemId="http://localhost:6080/WebAuction?WSDL" uri="wsdl/localhost_6080/WebAuction.wsdl"/>
+    <system systemId="http://localhost:6080/WebRegistration?WSDL" uri="wsdl/localhost_6080/WebRegistration.wsdl"/>
 </catalog>

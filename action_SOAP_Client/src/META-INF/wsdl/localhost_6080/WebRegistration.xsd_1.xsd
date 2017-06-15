@@ -8,6 +8,8 @@
 
 <xs:element name="registerUserResponse" type="tns:registerUserResponse"></xs:element>
 
+<xs:element name="user" type="tns:user"></xs:element>
+
 <xs:complexType name="getUser">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
@@ -21,7 +23,9 @@
 </xs:complexType>
 
 <xs:complexType name="user">
-<xs:sequence></xs:sequence>
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="registerUser">

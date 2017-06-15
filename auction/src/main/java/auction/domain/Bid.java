@@ -2,9 +2,13 @@ package auction.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import nl.fontys.util.FontysTime;
 import nl.fontys.util.Money;
-
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 public class Bid implements Serializable{
 
@@ -15,9 +19,11 @@ public class Bid implements Serializable{
     @ManyToOne
     private User buyer;
     private Money amount;
+
+
     public Bid()
     {
-        
+        this.time = FontysTime.now();
     }
     
     public Bid(User buyer, Money amount) {
@@ -36,5 +42,13 @@ public class Bid implements Serializable{
 
     public Money getAmount() {
         return amount;
+    }
+    
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
+    }
+
+    public void setAmount(Money amount) {
+        this.amount = amount;
     }
 }
