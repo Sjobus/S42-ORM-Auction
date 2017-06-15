@@ -12,7 +12,7 @@ import java.util.List;
 public class AuctionMgrTest {
 
     @Before
-    public void setUpTest() throws Exception {
+    public void setUp() throws Exception {
     }
 
     @Test
@@ -23,8 +23,11 @@ public class AuctionMgrTest {
 
         User seller1 = registerUser(email);
         Category cat = new Category();
+        cat.setDescription("cat2");
         Item item1 = offerItem(seller1, cat, omsch);
-        assertNotNull(item1);
+        Item item2 = getItem(item1.getId());
+        assertEquals(omsch, item2.getDescription());
+        assertEquals(email, item2.getSeller().getEmail());
     }
 
     @Test
@@ -37,11 +40,12 @@ public class AuctionMgrTest {
         User seller3 = registerUser(email3);
         User seller4 = registerUser(email4);
         Category cat = new Category();
+        cat.setDescription("cat3");
         Item item1 = offerItem(seller3, cat, omsch);
         Item item2 = offerItem(seller4, cat, omsch);
         
         System.out.println("Begin 1");
-        List<Item> res = (List<Item>) findItemByDescription(omsch);
+        List<Item> res = (List<Item>) findItemByDescription(omsch2);
         assertEquals(0, res.size());
         System.out.println("Klaar 1");
         System.out.println("Begin 2");
@@ -63,15 +67,26 @@ public class AuctionMgrTest {
         User buyer2 = registerUser(emailb2);
         // eerste bod
         Category cat = new Category();
+        cat.setDescription("cat9");
         Item item1 = offerItem(seller, cat, omsch);
-        Bid new1 = newBid(item1, buyer, new Money());
-        assertNotNull(new1);
-        // lager bod
-        Bid new2 = newBid(item1, buyer2, new Money());
-        assertNull(new2);
+        Money money = new Money();
+        money.setCents(10);
+        money.setCurrency("eur");
+        Bid new1 = newBid(item1, buyer, money);
+        assertEquals(emailb, new1.getBuyer().getEmail());
 
+        // lager bod
+        Money moneylower = new Money();
+        moneylower.setCents(9);
+        moneylower.setCurrency("eur");
+        Bid new2 = newBid(item1, buyer2, moneylower);
+        assertNull(new2);
+        
         // hoger bod
-        Bid new3 = newBid(item1, buyer2, new Money());
-        assertNotNull(new3);
+        Money moneyhigher = new Money();
+        moneyhigher.setCents(11);
+        moneyhigher.setCurrency("eur");
+        Bid new3 = newBid(item1, buyer2, moneyhigher);
+        assertEquals(emailb2, new3.getBuyer().getEmail());
     }
 }
