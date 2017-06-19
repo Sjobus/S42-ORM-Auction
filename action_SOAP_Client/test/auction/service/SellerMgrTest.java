@@ -19,18 +19,18 @@ public class SellerMgrTest {
     /**
      * Test of offerItem method, of class SellerMgr.
      */
-//    @Test
-//    public void testOfferItem() {
-//        String omsch = "omsch";
-//
-//        User user1 = registerUser("xx@nl");
-//        
-//        Category cat = new Category();
-//        cat.setDescription(omsch);
-//        
-//        Item item1 = offerItem(user1, cat, omsch);
-//        assertNotNull(item1);
-//    }
+    @Test
+    public void testOfferItem() {
+        String omsch = "omsch";
+
+        User user1 = registerUser("xx@nl");
+        
+        Category cat = new Category();
+        cat.setDescription(omsch);
+        
+        Item item1 = offerItem(user1, cat, omsch);
+        assertNotNull(item1);
+    }
 
     /**
      * Test of revokeItem method, of class SellerMgr.
@@ -60,7 +60,10 @@ public class SellerMgrTest {
         mny.setCents(100);
         mny.setCurrency("Euro");
         
+        item2 = getItem(item2.getId()); 
         newBid(item2, buyer, mny);
+        
+        item2 = getItem(item2.getId());
         boolean res2 = revokeItem(item2);
         assertFalse(res2);
         //assertTrue(res2); //met true werkt het wel, dit komt doordat de highest niet wordt geset
