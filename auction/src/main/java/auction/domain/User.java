@@ -29,5 +29,18 @@ public class User implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof User)
+        {
+            if(this.getEmail() == ((User) o).getEmail())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+   
     
 }

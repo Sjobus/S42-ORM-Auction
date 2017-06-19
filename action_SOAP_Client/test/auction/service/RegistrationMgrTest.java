@@ -23,7 +23,7 @@ public class RegistrationMgrTest {
         User user2 = registerUser("xxx2@yyy2");
         assertNotNull(user2);
         User user2bis = registerUser("xxx2@yyy2");
-        assertSame(user2bis, user2);
+        assertEquals(user2bis.getEmail(), user2.getEmail());
         //geen @ in het adres
         assertNull(registerUser("abc"));
     }
@@ -32,7 +32,7 @@ public class RegistrationMgrTest {
     public void getUserTest() {
         User user1 = registerUser("xxx5@yyy5");
         User userGet = getUser("xxx5@yyy5");
-        assertSame(userGet, user1);
+        assertEquals(userGet.getEmail(), user1.getEmail());
         assertNull(getUser("aaa4@bb5"));
         registerUser("abc");
         assertNull(getUser("abc"));
