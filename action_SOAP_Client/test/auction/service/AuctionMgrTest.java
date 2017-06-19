@@ -75,12 +75,18 @@ public class AuctionMgrTest {
         Bid new1 = newBid(item1, buyer, money);
         assertEquals(emailb, new1.getBuyer().getEmail());
 
+        item1 = getItem(item1.getId());
+        
         // lager bod
         Money moneylower = new Money();
         moneylower.setCents(9);
         moneylower.setCurrency("eur");
+        
+        //item1 = getItem(Long.MIN_VALUE)
         Bid new2 = newBid(item1, buyer2, moneylower);
         assertNull(new2);
+        
+        item1 = getItem(item1.getId());
         
         // hoger bod
         Money moneyhigher = new Money();

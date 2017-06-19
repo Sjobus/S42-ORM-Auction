@@ -74,7 +74,7 @@ public class Item implements Serializable, Comparable {
         if (highest != null && highest.getAmount().compareTo(amount) >= 0) {
             return null;
         }
-        highest = new Bid(buyer, amount);
+        setHighest(new Bid(buyer, amount));
         return highest;
     }
 
